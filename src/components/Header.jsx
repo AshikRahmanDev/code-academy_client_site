@@ -27,9 +27,18 @@ const Header = () => {
         <Link className="btn btn-ghost mx-3 normal-case text-lg">Blog</Link>
       </div>
       <div className="hidden md:flex items-center">
-        <Link className="btn btn-ghost mx-3 normal-case text-lg">Login</Link>
-        <Link className="btn btn-ghost mx-3 normal-case text-lg">Register</Link>
+        <Link to={"/login"} className="btn btn-ghost mx-3 normal-case text-lg">
+          Login
+        </Link>
+        <Link
+          to={"/register"}
+          className="btn btn-ghost mx-3 normal-case text-lg"
+        >
+          Register
+        </Link>
+
         {/* dark mode light mode toggle */}
+
         <label className="swap swap-rotate">
           <input type="checkbox" />
 
