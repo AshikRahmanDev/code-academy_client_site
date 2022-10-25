@@ -1,7 +1,6 @@
 import { RouterProvider } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
-import { router } from "./components/Routes/Router";
+import { router } from "./Router/Router";
 
 function App() {
   return (
