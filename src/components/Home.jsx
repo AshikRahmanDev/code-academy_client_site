@@ -4,9 +4,9 @@ import { MdPersonAddAlt, MdOutlineLibraryBooks } from "react-icons/md";
 
 const Home = () => {
   return (
-    <div className="bg-dark md:h-[92vh] w-[99%] mx-auto rounded-lg flex items-center">
+    <div className="bg-dark h-[92vh] w-[99%] mx-auto rounded-lg flex items-center">
       <div className="grid md:grid-cols-2 w-[95%] mx-auto">
-        <div className="md:ml-7 md:mt-7">
+        <div className="md:ml-7 md:mt-7 text-center md:text-start">
           <p className="text-yellow-300">Enjoy Programming With blabla</p>
           <h1 className="text-white text-4xl normal-case font-bold">
             Programming Free Online <br /> Courses Of All Time
@@ -17,7 +17,7 @@ const Home = () => {
             Pick up essential coding skills needed for frontend and/or backend
             web development, machine learning, IOS, Android, and much more.
           </p>
-          <div className="mt-7">
+          <div className="mt-7 text-center md:text-start">
             <Link className="btn bg-yellow-400/30 hover:bg-yellow-500 border-2 border-yellow-400/50 mr-4">
               Explore Courses
             </Link>
