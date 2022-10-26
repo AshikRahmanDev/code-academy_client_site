@@ -2,6 +2,7 @@ import React from "react";
 import { createContext } from "react";
 import {
   getAuth,
+  GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithPopup,
@@ -14,12 +15,17 @@ import { useState } from "react";
 export const AuthContext = createContext();
 const auth = getAuth(app);
 const google = new GoogleAuthProvider();
+const github = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const googleLogin = () => {
     return signInWithPopup(auth, google);
+  };
+
+  const githubLogin = () => {
+    return signInWithPopup(auth, github);
   };
 
   const logout = () => {
@@ -33,7 +39,7 @@ const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
-  const authInfo = { googleLogin, user, logout };
+  const authInfo = { googleLogin, user, logout, githubLogin };
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

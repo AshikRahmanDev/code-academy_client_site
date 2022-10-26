@@ -7,7 +7,8 @@ import { useContext } from "react";
 import { AuthContext } from "../Contaxt/AuthProvider";
 
 const Login = () => {
-  const { googleLogin } = useContext(AuthContext);
+  const { googleLogin, githubLogin } = useContext(AuthContext);
+
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
@@ -15,6 +16,13 @@ const Login = () => {
         console.log(user);
       })
       .catch((e) => console.error(e));
+  };
+
+  const handleGitHubLogin = () => {
+    githubLogin().then((result) => {
+      const user = result.user;
+      console.log(user);
+    });
   };
   return (
     <div className="bg-dark md:h-[92vh] h-[92vh] w-[99%] mx-auto rounded-lg md:grid md:grid-cols-2">
@@ -66,10 +74,13 @@ const Login = () => {
               Google
             </p>
 
-            <Link className="btn bg-white hover:bg-white text-theme font-bold mx-2 normal-case">
+            <p
+              onClick={handleGitHubLogin}
+              className="btn bg-white hover:bg-white text-theme font-bold mx-2 normal-case"
+            >
               <FaGithub className="text-xl mr-1" />
               GitHub
-            </Link>
+            </p>
           </div>
         </div>
       </div>
