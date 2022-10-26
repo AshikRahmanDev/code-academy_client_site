@@ -7,9 +7,9 @@ const Home = () => {
     <div className="bg-dark h-[92vh] w-[99%] mx-auto rounded-lg flex items-center">
       <div className="grid md:grid-cols-2 w-[95%] mx-auto">
         <div className="md:ml-7 md:mt-7 text-center md:text-start">
-          <p className="text-yellow-300">Enjoy Programming With blabla</p>
+          <p className="text-yellow-300">Enjoy Programming With Code-Academy</p>
           <h1 className="text-white text-4xl normal-case font-bold">
-            Programming Free Online <br /> Courses Of All Time
+            Programming Online <br /> Courses Of All Time
           </h1>
           <p className="text-base-100 md:w-[90%] mt-3">
             Learn programming with free online courses from real college courses

@@ -1,15 +1,45 @@
 import React from "react";
+import { useContext } from "react";
 import { FaUser, FaLink } from "react-icons/fa";
 import { MdEmail, MdPassword } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Contaxt/AuthProvider";
 
 const Register = () => {
+  const { register, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, photo, email, password);
+    const ProfileData = { displayName: name, photoURL: photo };
+
+    register(email, password)
+      .then((result) => {
+        const user = result.user;
+
+        updateUserProfile(ProfileData)
+          .then(() => {})
+          .catch((e) => console.log(e));
+
+        navigate("/");
+        console.log(user);
+      })
+      .catch((e) => console.log(e));
+
+    form.reset();
+  };
   return (
     <div className="bg-dark md:h-[92vh] h-[92vh] w-[99%] mx-auto rounded-lg md:grid md:grid-cols-2">
       <div className="mx-auto w-[50%] pt-16 md:pt-0 md:my-auto">
         <h1 className="text-white text-3xl normal-case font-bold">Sign Up</h1>
 
-        <form action="">
+        <form onSubmit={handleSubmit} action="">
           <div className="mt-5 flex items-center border-b text-white">
             <FaUser />
             <input

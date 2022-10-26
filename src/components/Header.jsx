@@ -21,7 +21,7 @@ const Header = () => {
           className="btn btn-ghost flex items-center normal-case text-xl text-theme"
         >
           <SiQuickbooks className="text-yellow-500" />{" "}
-          <span className="ml-1">Programming</span>
+          <span className="ml-1">Code-Academy</span>
         </Link>
       </div>
 
@@ -60,8 +60,12 @@ const Header = () => {
         {user?.uid ? (
           <div className="flex items-center">
             <img
-              className="w-[35px] rounded-full"
-              src={user?.photoURL}
+              className="w-[35px] h-[35px] rounded-full"
+              src={
+                user?.photoURL
+                  ? user.photoURL
+                  : "https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg"
+              }
               alt=""
             ></img>
             <Link
