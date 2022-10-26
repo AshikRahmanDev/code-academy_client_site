@@ -3,8 +3,19 @@ import { Link } from "react-router-dom";
 import { MdEmail, MdPassword } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../Contaxt/AuthProvider";
 
 const Login = () => {
+  const { googleLogin } = useContext(AuthContext);
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((e) => console.error(e));
+  };
   return (
     <div className="bg-dark md:h-[92vh] h-[92vh] w-[99%] mx-auto rounded-lg md:grid md:grid-cols-2">
       <div className="mx-auto w-[50%] pt-16 md:pt-0 md:my-auto">
@@ -47,10 +58,13 @@ const Login = () => {
           <p>-or login with-</p>
 
           <div className="flex justify-center mt-3">
-            <Link className="btn bg-white hover:bg-white text-theme font-bold mx-2 normal-case">
+            <p
+              onClick={handleGoogleLogin}
+              className="btn bg-white hover:bg-white text-theme font-bold mx-2 normal-case"
+            >
               <FcGoogle className="text-xl mr-1" />
               Google
-            </Link>
+            </p>
 
             <Link className="btn bg-white hover:bg-white text-theme font-bold mx-2 normal-case">
               <FaGithub className="text-xl mr-1" />
