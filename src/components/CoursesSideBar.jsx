@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const CoursesSideBar = ({ courses }) => {
   return (
-    <div className="bg-yellow-500/40 h-[100%] rounded-lg">
-      <h1 className="text-2xl text-center pt-2 normal-case font-semibold">
+    <div className="bg-yellow-400/50 h-[100%] rounded-lg">
+      <h1 className="text-2xl text-center text-white pt-2 normal-case font-semibold">
         Courses
       </h1>
       <div className="w-[90%] mx-auto mt-5">
