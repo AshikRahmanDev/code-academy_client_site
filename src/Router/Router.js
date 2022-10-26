@@ -11,7 +11,11 @@ export const router = createBrowserRouter([
     element: <Root />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/courses", element: <Courses /> },
+      {
+        path: "/courses",
+        loader: () => fetch("https://elearning-server.vercel.app/courses"),
+        element: <Courses />,
+      },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
     ],
