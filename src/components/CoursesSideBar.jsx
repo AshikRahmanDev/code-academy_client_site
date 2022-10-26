@@ -10,7 +10,7 @@ const CoursesSideBar = ({ courses }) => {
       <div className="w-[90%] mx-auto mt-5">
         {courses.map((courses, idx) => (
           <Link
-            to={courses.id}
+            to={`/courseDetails/${courses.id}`}
             className="btn w-[100%] my-2 bg-dark hover:bg-yellow-500/60 hover:border-2 border-0"
             key={idx}
           >

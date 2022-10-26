@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Courses from "../components/Courses";
+import CoursesDetails from "../components/CoursesDetails";
 import Home from "../components/Home";
 import Login from "../components/Login";
 import Register from "../components/Register";
@@ -15,6 +16,14 @@ export const router = createBrowserRouter([
         path: "/courses",
         loader: () => fetch("https://elearning-server.vercel.app/courses"),
         element: <Courses />,
+      },
+      {
+        path: "/courseDetails/:id",
+        loader: ({ params }) =>
+          fetch(
+            `https://elearning-server.vercel.app/courseDetails/${params.id}`
+          ),
+        element: <CoursesDetails />,
       },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },

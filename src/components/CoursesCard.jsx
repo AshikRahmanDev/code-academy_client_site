@@ -3,7 +3,7 @@ import { BiTimeFive } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 const CoursesCard = ({ singleCourse }) => {
-  const { picture, time, rating, course, price } = singleCourse;
+  const { picture, time, rating, course, price, id } = singleCourse;
   return (
     <div className="h-[210px] bg-yellow-400/50 shadow-xl rounded-lg p-2 relative">
       <figure>
@@ -19,7 +19,10 @@ const CoursesCard = ({ singleCourse }) => {
           <p className="text-lg normal-case font-semibold">{course}</p>
           <p>Price: ${price}</p>
         </div>
-        <Link className="btn mt-2 hover:text-theme border-0 bg-dark">
+        <Link
+          to={`/courseDetails/${id}`}
+          className="btn mt-2 hover:text-theme border-0 bg-dark"
+        >
           View Details
         </Link>
       </div>
