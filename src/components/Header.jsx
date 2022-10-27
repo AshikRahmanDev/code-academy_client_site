@@ -33,7 +33,9 @@ const Header = () => {
           Courses
         </Link>
         <Link className="btn btn-ghost mx-3 normal-case text-lg">FAQ</Link>
-        <Link className="btn btn-ghost mx-3 normal-case text-lg">Blog</Link>
+        <Link to={"/blog"} className="btn btn-ghost mx-3 normal-case text-lg">
+          Blog
+        </Link>
       </div>
       <div className="hidden md:flex items-center">
         {/* dark mode light mode toggle */}

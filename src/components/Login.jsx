@@ -19,10 +19,12 @@ const Login = () => {
   };
 
   const handleGitHubLogin = () => {
-    githubLogin().then((result) => {
-      const user = result.user;
-      console.log(user);
-    });
+    githubLogin()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((e) => console.log(e));
   };
   return (
     <div className="bg-dark md:h-[92vh] h-[92vh] w-[99%] mx-auto rounded-lg md:grid md:grid-cols-2">
