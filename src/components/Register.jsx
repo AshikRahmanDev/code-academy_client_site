@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { FaUser, FaLink } from "react-icons/fa";
 import { MdEmail, MdPassword } from "react-icons/md";
@@ -6,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contaxt/AuthProvider";
 
 const Register = () => {
+  const [error, setError] = useState(null);
   const { register, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -16,23 +18,33 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photo, email, password);
+    const confirm = form.confirm.value;
     const ProfileData = { displayName: name, photoURL: photo };
 
-    register(email, password)
-      .then((result) => {
-        const user = result.user;
+    if (password.length < 6) {
+      return setError("Password must be 6 Character or more");
+    }
 
-        updateUserProfile(ProfileData)
-          .then(() => {})
-          .catch((e) => console.log(e));
+    if (password !== confirm) {
+      return setError("Password must be same");
+    } else {
+      register(email, password)
+        .then((result) => {
+          const user = result.user;
 
-        navigate("/");
-        console.log(user);
-      })
-      .catch((e) => console.log(e));
+          updateUserProfile(ProfileData)
+            .then(() => {})
+            .catch((e) => console.log(e));
 
-    form.reset();
+          navigate("/");
+          console.log(user);
+        })
+        .catch((e) => {
+          setError(e.message);
+        });
+
+      form.reset();
+    }
   };
   return (
     <div className="bg-dark md:h-[92vh] h-[92vh] w-[99%] mx-auto rounded-lg md:grid md:grid-cols-2">
@@ -47,6 +59,7 @@ const Register = () => {
               type="text"
               name="name"
               placeholder="Full Name"
+              required
             />
           </div>
           <div className="mt-5 flex items-center border-b text-white">
@@ -56,6 +69,7 @@ const Register = () => {
               type="text"
               name="photo"
               placeholder="Photo URL"
+              required
             />
           </div>
           <div className="mt-5 flex items-center border-b text-white">
@@ -65,6 +79,7 @@ const Register = () => {
               type="email"
               name="email"
               placeholder="Your Email"
+              required
             />
           </div>
           <div className="mt-5 flex items-center border-b text-white">
@@ -74,8 +89,20 @@ const Register = () => {
               type="password"
               name="password"
               placeholder="Password"
+              required
             />
           </div>
+          <div className="mt-5 flex items-center border-b text-white">
+            <MdPassword />
+            <input
+              className="bg-transparent ml-2 outline-none p-2 w-[90%]"
+              type="password"
+              name="confirm"
+              placeholder="Confirm Password"
+              required
+            />
+          </div>
+          <p className="text-red-500">{error}</p>
           <div className="text-center mt-5">
             <input
               className="btn bg-yellow-400/30 w-[200px] hover:bg-yellow-500 border-2 border-yellow-400/50"

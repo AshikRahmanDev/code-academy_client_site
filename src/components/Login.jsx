@@ -5,8 +5,10 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../Contaxt/AuthProvider";
+import { useState } from "react";
 
 const Login = () => {
+  const [error, setError] = useState(null);
   const { googleLogin, githubLogin, login } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -36,12 +38,20 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
-    login(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
-      navigate(from, { replace: true });
-    });
+    if (password.length < 6) {
+      return setError("Password must be 6 Character or more");
+    }
+    login(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setError(null);
+        navigate(from, { replace: true });
+      })
+      .catch((e) => {
+        const err = e.message;
+        setError(err);
+      });
   };
   return (
     <div className="bg-dark md:h-[92vh] h-[92vh] w-[99%] mx-auto rounded-lg md:grid md:grid-cols-2">
@@ -56,6 +66,7 @@ const Login = () => {
               type="email"
               name="email"
               placeholder="Your Email"
+              required
             />
           </div>
           <div className="mt-5 flex items-center border-b text-white">
@@ -65,8 +76,10 @@ const Login = () => {
               type="password"
               name="password"
               placeholder="Password"
+              required
             />
           </div>
+          <p className="text-red-500">{error}</p>
           <div className="text-center mt-5">
             <input
               className="btn bg-yellow-400/30 w-[200px] hover:bg-yellow-500 border-2 border-yellow-400/50"
