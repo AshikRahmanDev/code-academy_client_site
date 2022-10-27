@@ -32,7 +32,9 @@ const Header = () => {
         >
           Courses
         </Link>
-        <Link className="btn btn-ghost mx-3 normal-case text-lg">FAQ</Link>
+        <Link to={"/faq"} className="btn btn-ghost mx-3 normal-case text-lg">
+          FAQ
+        </Link>
         <Link to={"/blog"} className="btn btn-ghost mx-3 normal-case text-lg">
           Blog
         </Link>

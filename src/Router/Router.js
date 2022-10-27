@@ -3,6 +3,7 @@ import Blog from "../components/Blog";
 import Checkout from "../components/Checkout";
 import Courses from "../components/Courses";
 import CoursesDetails from "../components/CoursesDetails";
+import FAQ from "../components/FAQ";
 import Home from "../components/Home";
 import Login from "../components/Login";
 import NotFound from "../components/NotFound";
@@ -41,6 +42,7 @@ export const router = createBrowserRouter([
           </AuthProtected>
         ),
       },
+      { path: "/faq", element: <FAQ /> },
       { path: "/blog", element: <Blog /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
