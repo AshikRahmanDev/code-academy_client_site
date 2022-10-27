@@ -5,6 +5,7 @@ import Courses from "../components/Courses";
 import CoursesDetails from "../components/CoursesDetails";
 import Home from "../components/Home";
 import Login from "../components/Login";
+import NotFound from "../components/NotFound";
 import Register from "../components/Register";
 import Root from "../Layout/Root";
 import AuthProtected from "./AuthProtected";
@@ -41,4 +42,5 @@ export const router = createBrowserRouter([
       { path: "/register", element: <Register /> },
     ],
   },
+  { path: "*", element: <NotFound /> },
 ]);

@@ -105,10 +105,57 @@ const Header = () => {
           className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
         >
           <li>
-            <a>Item 1</a>
+            {user?.uid ? (
+              <div className="flex flex-col">
+                <img
+                  title={user?.displayName}
+                  className="w-[35px] h-[35px] rounded-full"
+                  src={
+                    user?.photoURL
+                      ? user.photoURL
+                      : "https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg"
+                  }
+                  alt=""
+                ></img>
+                <Link
+                  onClick={handleLogout}
+                  className="btn btn-ghost mx-1 normal-case text-lg"
+                >
+                  <FiLogOut />
+                </Link>
+              </div>
+            ) : (
+              <div className="flex flex-col">
+                <Link
+                  to={"/login"}
+                  className="btn btn-ghost mx-1 normal-case text-lg"
+                >
+                  Login
+                </Link>
+                <Link
+                  to={"/register"}
+                  className="btn btn-ghost mx-1 normal-case text-lg"
+                >
+                  Register
+                </Link>
+              </div>
+            )}
           </li>
           <li>
-            <a>Item 2</a>
+            <Link
+              to={"/courses"}
+              className="btn btn-ghost mx-3 normal-case text-lg"
+            >
+              Courses
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={"/blog"}
+              className="btn btn-ghost mx-3 normal-case text-lg"
+            >
+              Blog
+            </Link>
           </li>
         </ul>
       </div>
