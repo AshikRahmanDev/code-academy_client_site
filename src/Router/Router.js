@@ -31,6 +31,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "/checkout/:id",
+        loader: ({ params }) =>
+          fetch(
+            `https://elearning-server.vercel.app/courseDetails/${params.id}`
+          ),
         element: (
           <AuthProtected>
             <Checkout />
