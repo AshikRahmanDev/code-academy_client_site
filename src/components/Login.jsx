@@ -84,7 +84,7 @@ const Login = () => {
             <input
               className="btn bg-yellow-400/30 w-[200px] hover:bg-yellow-500 border-2 border-yellow-400/50"
               type="submit"
-              value="Sign Up"
+              value="Sign In"
             />
           </div>
         </form>

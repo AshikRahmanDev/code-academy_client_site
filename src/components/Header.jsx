@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { SiQuickbooks } from "react-icons/si";
 import { FiLogOut } from "react-icons/fi";
+import { FaRegCopy } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../Contaxt/AuthProvider";
 
@@ -88,16 +89,11 @@ const Header = () => {
             >
               Login
             </Link>
-            <Link
-              to={"/register"}
-              className="btn btn-ghost mx-1 normal-case text-lg"
-            >
-              Register
-            </Link>
           </div>
         )}
       </div>
 
+      {/* phone toggle navbar  */}
       <div className="dropdown dropdown-end md:hidden">
         <label tabIndex={0} className="btn btn-square btn-ghost ">
           <GiHamburgerMenu className="text-xl" />
@@ -134,12 +130,6 @@ const Header = () => {
                 >
                   Login
                 </Link>
-                <Link
-                  to={"/register"}
-                  className="btn btn-ghost mx-1 normal-case text-lg"
-                >
-                  Register
-                </Link>
               </div>
             )}
           </li>
@@ -149,6 +139,14 @@ const Header = () => {
               className="btn btn-ghost mx-3 normal-case text-lg"
             >
               Courses
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={"/faq"}
+              className="btn btn-ghost mx-3 normal-case text-lg"
+            >
+              FAQ
             </Link>
           </li>
           <li>

@@ -1,17 +1,32 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
+import { FaRegCopy } from "react-icons/fa";
+import Pdf from "react-to-pdf";
+
 const CoursesDetails = () => {
+  const ref = React.createRef();
   const courseData = useLoaderData();
   const { title, price, id, overview, details, picture } = courseData[0];
 
   return (
     <div className="bg-dark h-[100%] md:h-[92vh] w-[99%] mx-auto rounded-lg p-2 grid grid-cols-5">
-      <div className="text-white normal-case col-span-5 md:col-span-3 mt-5 md:ml-7">
+      <div
+        ref={ref}
+        className="text-white normal-case col-span-5 md:col-span-3 mt-5 md:ml-7 bg-dark p-4"
+      >
         <div className="flex">
           <h1 className="text-lg md:text-5xl font-bold text-yellow-500">
             {title}
           </h1>
+
+          <Pdf targetRef={ref} filename="details.pdf">
+            {({ toPdf }) => (
+              <button className="btn" onClick={toPdf}>
+                <FaRegCopy />
+              </button>
+            )}
+          </Pdf>
         </div>
         <img className="md:hidden" src={picture} alt="" />
 
