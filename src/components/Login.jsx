@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Contaxt/AuthProvider";
 
 const Login = () => {
-  const { googleLogin, githubLogin } = useContext(AuthContext);
+  const { googleLogin, githubLogin, login } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -30,12 +30,25 @@ const Login = () => {
       })
       .catch((e) => console.log(e));
   };
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    login(email, password).then((result) => {
+      const user = result.user;
+      console.log(user);
+      navigate(from, { replace: true });
+    });
+  };
   return (
     <div className="bg-dark md:h-[92vh] h-[92vh] w-[99%] mx-auto rounded-lg md:grid md:grid-cols-2">
       <div className="mx-auto w-[50%] pt-16 md:pt-0 md:my-auto">
         <h1 className="text-white text-3xl normal-case font-bold">Login</h1>
 
-        <form action="">
+        <form onSubmit={handleLogin} action="">
           <div className="mt-5 flex items-center border-b text-white">
             <MdEmail />
             <input

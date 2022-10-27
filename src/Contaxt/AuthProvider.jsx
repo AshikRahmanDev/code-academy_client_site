@@ -6,6 +6,7 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
@@ -20,26 +21,37 @@ const google = new GoogleAuthProvider();
 const github = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
 
+  const login = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
   const googleLogin = () => {
+    setLoading(true);
     return signInWithPopup(auth, google);
   };
 
   const githubLogin = () => {
+    setLoading(true);
     return signInWithPopup(auth, github);
   };
 
   const register = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const updateUserProfile = (ProfileData) => {
-    console.log(ProfileData);
+    setLoading(true);
+
     return updateProfile(auth.currentUser, ProfileData);
   };
 
   const logout = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
@@ -47,6 +59,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
       setUser(currentUser);
+      setLoading(false);
     });
     return unsubscribe;
   }, []);
@@ -58,6 +71,8 @@ const AuthProvider = ({ children }) => {
     githubLogin,
     register,
     updateUserProfile,
+    login,
+    loading,
   };
 
   return (
