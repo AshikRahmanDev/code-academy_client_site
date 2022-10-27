@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MdEmail, MdPassword } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
@@ -8,12 +8,16 @@ import { AuthContext } from "../Contaxt/AuthProvider";
 
 const Login = () => {
   const { googleLogin, githubLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((e) => console.error(e));
   };

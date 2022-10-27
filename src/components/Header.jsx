@@ -62,6 +62,7 @@ const Header = () => {
         {user?.uid ? (
           <div className="flex items-center">
             <img
+              title={user?.displayName}
               className="w-[35px] h-[35px] rounded-full"
               src={
                 user?.photoURL

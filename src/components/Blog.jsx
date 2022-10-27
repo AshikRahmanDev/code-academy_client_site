@@ -2,13 +2,13 @@ import React from "react";
 
 const Blog = () => {
   return (
-    <div className="bg-dark md:h-[92vh] h-[92vh] w-[99%] mx-auto rounded-lg p-3 pl-5">
+    <div className="bg-dark md:h-[92vh] h-[100%] w-[99%] mx-auto rounded-lg p-3 pl-5">
       <h1 className="text-white text-2xl font-bold normal-case">
         Recent Blogs
       </h1>
 
-      <div className="text-white border-2 border-yellow-500 p-3 my-2">
-        <h4 className="text-xl">what is cors?</h4>
+      <div className="text-white p-3 my-2">
+        <h4 className="text-xl text-yellow-400">what is cors?</h4>
         <p>
           Cross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism
           that allows a server to indicate any origins (domain, scheme, or port)
@@ -20,8 +20,8 @@ const Blog = () => {
           method and headers that will be used in the actual request.
         </p>
       </div>
-      <div className="text-white border-2 border-yellow-500 p-3 my-2">
-        <h4 className="text-xl">
+      <div className="text-white p-3 my-2">
+        <h4 className="text-xl text-yellow-400">
           Why are you using firebase? What other options do you have to
           implement authentication?
         </h4>
@@ -36,8 +36,10 @@ const Blog = () => {
           <li>Amazon Redshift</li>
         </p>
       </div>
-      <div className="text-white border-2 border-yellow-500 p-3 my-2">
-        <h4 className="text-xl">How does the private route work?</h4>
+      <div className="text-white p-3 my-2">
+        <h4 className="text-xl text-yellow-400">
+          How does the private route work?
+        </h4>
         <p>
           The private route component is similar to the public route, the only
           change is that redirect URL and authenticate condition. If the user is
@@ -46,8 +48,10 @@ const Blog = () => {
           (Logged in).
         </p>
       </div>
-      <div className="text-white border-2 border-yellow-500 p-3 my-2">
-        <h4 className="text-xl">What is Node? How does Node work?</h4>
+      <div className="text-white p-3 my-2">
+        <h4 className="text-xl text-yellow-400">
+          What is Node? How does Node work?
+        </h4>
         <p>
           Node allows developers to write JavaScript code that runs directly in
           a computer process itself instead of in a browser. <br />
