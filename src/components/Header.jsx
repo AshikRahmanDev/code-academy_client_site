@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { SiQuickbooks } from "react-icons/si";
 import { FiLogOut } from "react-icons/fi";
-import { FaRegCopy } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../Contaxt/AuthProvider";
 
@@ -88,6 +87,12 @@ const Header = () => {
               className="btn btn-ghost mx-1 normal-case text-lg"
             >
               Login
+            </Link>
+            <Link
+              to={"/register"}
+              className="btn btn-ghost mx-1 normal-case text-lg"
+            >
+              Register
             </Link>
           </div>
         )}
